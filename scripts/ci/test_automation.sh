@@ -46,8 +46,5 @@ title 'Running tests'
 PYTHON_DIR=`cd $(dirname $(which python)); cd ..; pwd`
 SITE_PACKAGES_DIR=`find $PYTHON_DIR -name site-packages`
 
-set +e
-pytest -n 8 $SITE_PACKAGES_DIR/azure/cli/core/tests
-
 set -e
 find $SITE_PACKAGES_DIR/azure/cli/command_modules -type d | grep -e 'tests/latest$' | xargs pytest -n 8 
