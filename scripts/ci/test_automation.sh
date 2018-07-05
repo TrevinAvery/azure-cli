@@ -48,5 +48,8 @@ SITE_PACKAGES_DIR=`find $PYTHON_DIR -name site-packages`
 
 set +e
 for TEST_DIR in `find $SITE_PACKAGES_DIR/azure/cli/command_modules -type d | grep -e 'tests/latest$'`; do
-    pytest -n 8 $TEST_DIR
+    echo ""
+    title "Run automation in $TEST_DIR"
+    pytest -n 8 --no-print-logs $TEST_DIR
+    echo ""
 done
